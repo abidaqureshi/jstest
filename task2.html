@@ -1,0 +1,40 @@
+
+<html>
+<head>
+<script>
+
+var str1 = "foo(bar)";
+var str2 = "(bar)";
+var str3 = "oo(bar)blim";
+var str4 = "foo(foo(bar))blim";
+/*
+foo(bar) => foorab
+(bar) => rab
+foo(bar)blim => foorabblim
+foo(foo(bar))blim => foobaroofblim
+*/
+
+function doPalindrome ( str ) {
+
+    var par = "(";
+
+    if ( str.indexOf(par, 0) > -1 ) {
+
+        var pos = str.indexOf(par, 0);
+        var strp1 = str.substr( 0,pos);
+        var strp2 = str.substr(pos);
+        return  doPalindrome(strp2)
+    }else {
+
+        return strp1;
+    }
+}
+
+doPalindrome ( str1 );
+</script>
+</head>
+<body>
+    <div id="output">
+    </div>
+</body>
+</html>
